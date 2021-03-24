@@ -5,12 +5,12 @@ groups:
   - path: res/drawables
     class_name: AppImages
     package: res
-    types: [ .jpg, .png, .webp, .jpeg ]
+    types: [ .jpg, .png, .webp ]
   - path: res/svg
     class_name: AppVectorialImages
     package: res
     types: [ .svg ]
-  - path: res/fonts
-      class_name: AppIcons
-      package: res
-      types: [ .ttf ]
+  - path: res
+    class_name: AppIcons
+    package: res
+    types: [ .ttf ]
