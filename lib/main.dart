@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:yuka/res/app_colors.dart';
-import 'package:yuka/res/app_icons.dart';
 import 'package:yuka/res/app_images.dart';
 import 'package:yuka/res/app_vectorial_images.dart';
+import 'package:yuka/res/resources.dart';
 
 void main() {
   runApp(MyApp());
@@ -75,13 +75,15 @@ class _MyHomePageState extends State<MyHomePage> {
             Image.asset(AppVectorialImages.appLogo),
             Text("Vous n'avez pas encore scanné de produit."),
             TextButton.icon(
-              label: Text('Commencer'),
+              label: Padding(
+                  padding: EdgeInsets.all(10), child: Text('Commencer')),
               icon: Icon(Icons.arrow_right_alt),
               style: OutlinedButton.styleFrom(
                 primary: AppColors.blue,
                 shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(22.0))),
                 backgroundColor: AppColors.yellow,
+                padding: EdgeInsets.fromLTRB(10, 10, 10, 10),
               ),
               onPressed: () {},
             ),
@@ -138,12 +140,44 @@ class Header extends StatelessWidget {
     double screenWidth = query.size.width;
     double screenHeight = query.size.height;
     return Stack(
+      alignment: Alignment.bottomCenter,
       children: [
         Image.asset(
           AppImages.pancakes,
           width: screenWidth,
         ),
-        Column(children: [Text('Pancakes'), Text('Dessert')])
+        Container(
+          width: screenWidth,
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.only(
+              topLeft: Radius.circular(16),
+              topRight: Radius.circular(16),
+            ),
+            color: AppColors.white,
+          ),
+          child: Padding(
+            padding: EdgeInsets.fromLTRB(20, 30, 20, 0),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  'Pancakes',
+                  style: TextStyle(
+                    color: AppColors.blue,
+                    fontWeight: FontWeight.w900,
+                    fontSize: 24,
+                  ),
+                ),
+                Text(
+                  'Grand mère Danette',
+                  style: TextStyle(
+                    color: AppColors.gray3,
+                  ),
+                ),
+              ],
+            ),
+          ),
+        ),
       ],
     );
   }
