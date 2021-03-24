@@ -1,4 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:yuka/res/app_colors.dart';
+import 'package:yuka/res/app_icons.dart';
+import 'package:yuka/res/app_vectorial_images.dart';
 
 void main() {
   runApp(MyApp());
@@ -11,16 +14,10 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       title: 'Flutter Demo',
       theme: ThemeData(
-        // This is the theme of your application.
-        //
-        // Try running your application with "flutter run". You'll see the
-        // application has a blue toolbar. Then, without quitting the app, try
-        // changing the primarySwatch below to Colors.green and then invoke
-        // "hot reload" (press "r" in the console where you ran "flutter run",
-        // or simply save your changes to "hot reload" in a Flutter IDE).
-        // Notice that the counter didn't reset back to zero; the application
-        // is not restarted.
-        primarySwatch: Colors.blue,
+        primaryColor: AppColors.blue,
+        primaryColorDark: AppColors.blueDark,
+        primaryColorLight: AppColors.blueLight,
+        accentColor: AppColors.yellow,
       ),
       home: MyHomePage(title: 'Flutter Demo Home Page'),
     );
@@ -42,7 +39,8 @@ class MyHomePage extends StatefulWidget {
   final String? title;
 
   @override
-  _MyHomePageState createState() => _MyHomePageState();
+  _FichePageState createState() => _FichePageState();
+  //_MyHomePageState createState() => _MyHomePageState();
 }
 
 class _MyHomePageState extends State<MyHomePage> {
@@ -61,44 +59,40 @@ class _MyHomePageState extends State<MyHomePage> {
 
   @override
   Widget build(BuildContext context) {
-    // This method is rerun every time setState is called, for instance as done
-    // by the _incrementCounter method above.
-    //
-    // The Flutter framework has been optimized to make rerunning build methods
-    // fast, so that you can just rebuild anything that needs updating rather
-    // than having to individually change instances of widgets.
     return Scaffold(
       appBar: AppBar(
         // Here we take the value from the MyHomePage object that was created by
         // the App.build method, and use it to set our appbar title.
-        title: Text(widget.title!),
+        title: Text('Mes scans'),
+        centerTitle: false,
+        actions: <Widget>[
+          IconButton(
+            icon: FittedBox(
+              child: Icon(
+                AppIcons.barcode,
+                size: 50.0,
+              ),
+            ),
+            onPressed: () {},
+          ),
+        ],
       ),
       body: Center(
-        // Center is a layout widget. It takes a single child and positions it
-        // in the middle of the parent.
         child: Column(
-          // Column is also a layout widget. It takes a list of children and
-          // arranges them vertically. By default, it sizes itself to fit its
-          // children horizontally, and tries to be as tall as its parent.
-          //
-          // Invoke "debug painting" (press "p" in the console, choose the
-          // "Toggle Debug Paint" action from the Flutter Inspector in Android
-          // Studio, or the "Toggle Debug Paint" command in Visual Studio Code)
-          // to see the wireframe for each widget.
-          //
-          // Column has various properties to control how it sizes itself and
-          // how it positions its children. Here we use mainAxisAlignment to
-          // center the children vertically; the main axis here is the vertical
-          // axis because Columns are vertical (the cross axis would be
-          // horizontal).
           mainAxisAlignment: MainAxisAlignment.center,
           children: <Widget>[
-            Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
+            Image.asset(AppVectorialImages.appLogo),
+            Text("Vous n'avez pas encore scanné de produit."),
+            TextButton.icon(
+              label: Text('Commencer'),
+              icon: Icon(Icons.arrow_right_alt),
+              style: OutlinedButton.styleFrom(
+                primary: AppColors.blue,
+                shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(22.0))),
+                backgroundColor: AppColors.yellow,
+              ),
+              onPressed: () {},
             ),
           ],
         ),
@@ -110,4 +104,96 @@ class _MyHomePageState extends State<MyHomePage> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
+}
+
+class _FichePageState extends State<MyHomePage> {
+  int _counter = 0;
+
+  void _incrementCounter() {
+    setState(() {
+      // This call to setState tells the Flutter framework that something has
+      // changed in this State, which causes it to rerun the build method below
+      // so that the display can reflect the updated values. If we changed
+      // _counter without calling setState(), then the build method would not be
+      // called again, and so nothing would appear to happen.
+      _counter++;
+    });
+  }
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        // Here we take the value from the MyHomePage object that was created by
+        // the App.build method, and use it to set our appbar title.
+        title: Text('Petit pois'),
+        centerTitle: false,
+        actions: <Widget>[
+          IconButton(
+            icon: FittedBox(
+              child: Icon(
+                AppIcons.barcode,
+                size: 50.0,
+              ),
+            ),
+            onPressed: () {},
+          ),
+        ],
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: <Widget>[
+            Image.asset(AppVectorialImages.appLogo),
+            Text("Vous n'avez pas encore scanné de produit."),
+            TextButton.icon(
+              label: Text('Commencer'),
+              icon: Icon(Icons.arrow_right_alt),
+              style: OutlinedButton.styleFrom(
+                primary: AppColors.blue,
+                shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(22.0))),
+                backgroundColor: AppColors.yellow,
+              ),
+              onPressed: () {},
+            ),
+          ],
+        ),
+      ),
+      floatingActionButton: FloatingActionButton(
+        onPressed: _incrementCounter,
+        tooltip: 'Increment',
+        child: Icon(Icons.add),
+      ), // This trailing comma makes auto-formatting nicer for build methods.
+    );
+  }
+}
+
+class Product {
+  final String barcode;
+  final String? name;
+  final String? altName;
+  final String? picture;
+  final String? quantity;
+  final List<String>? brands;
+  final List<String>? manufacturingCountries;
+  final List<String>? ingredients;
+  final List<String>? traces;
+  final List<String>? allergens;
+  final Map<String, String>? additives;
+  final bool? ingredientsFromPalmOil;
+
+  Product(
+      {required this.barcode,
+      this.name,
+      this.altName,
+      this.picture,
+      this.quantity,
+      this.brands,
+      this.manufacturingCountries,
+      this.ingredients,
+      this.traces,
+      this.allergens,
+      this.additives,
+      this.ingredientsFromPalmOil});
 }
