@@ -6,4 +6,5 @@ class AppImages {
   static const String nutriscoreC = 'lib/res/drawables/nutriscore_c.png';
   static const String nutriscoreD = 'lib/res/drawables/nutriscore_d.png';
   static const String nutriscoreE = 'lib/res/drawables/nutriscore_e.png';
+  static const String pancakes = 'lib/res/drawables/pancakes.jpg';
 }
