@@ -21,15 +21,15 @@ class AppIcons {
   static const String _kFontFam = 'AppIcons';
   static const String? _kFontPkg = null;
 
-  static const IconData ecoscore_a =
+  static const IconData ecoscoreA =
       IconData(0xe800, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData ecoscore_b =
+  static const IconData ecoscoreB =
       IconData(0xe801, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData ecoscore_c =
+  static const IconData ecoscoreC =
       IconData(0xe802, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData ecoscore_d =
+  static const IconData ecoscoreD =
       IconData(0xe803, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData ecoscore_e =
+  static const IconData ecoscoreE =
       IconData(0xe804, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData barcode =
       IconData(0xe807, fontFamily: _kFontFam, fontPackage: _kFontPkg);
@@ -39,12 +39,12 @@ class AppIcons {
       IconData(0xe809, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData share =
       IconData(0xe80a, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData tab_array =
+  static const IconData tabArray =
       IconData(0xe80b, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData tab_barcode =
+  static const IconData tabBarcode =
       IconData(0xe80c, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData tab_fridge =
+  static const IconData tabFridge =
       IconData(0xe80d, fontFamily: _kFontFam, fontPackage: _kFontPkg);
-  static const IconData tab_nutrition =
+  static const IconData tabNutrition =
       IconData(0xe80e, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }

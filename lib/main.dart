@@ -1,8 +1,11 @@
 import 'package:flutter/material.dart';
+// import 'package:http/http.dart' as http;
 import 'package:yuka/res/app_colors.dart';
-import 'package:yuka/res/app_images.dart';
 import 'package:yuka/res/app_vectorial_images.dart';
 import 'package:yuka/res/resources.dart';
+
+import 'app_icons.dart';
+import 'fiche_page.dart';
 
 void main() {
   runApp(MyApp());
@@ -37,13 +40,15 @@ class MyHomePage extends StatefulWidget {
 class _MyHomePageState extends State<MyHomePage> {
   int _counter = 0;
 
+  // var Uri url = Uri.parse('https://example.com/whatsit/create');
+  // var response = await http.post(url, body: {'name': 'doodle', 'color': 'blue'});
+  // print('Response status: ${response.statusCode}');
+  // print('Response body: ${response.body}');
+
+  // print(await http.read('https://example.com/foobar.txt'));
+
   void _incrementCounter() {
     setState(() {
-      // This call to setState tells the Flutter framework that something has
-      // changed in this State, which causes it to rerun the build method below
-      // so that the display can reflect the updated values. If we changed
-      // _counter without calling setState(), then the build method would not be
-      // called again, and so nothing would appear to happen.
       _counter++;
     });
   }
@@ -111,10 +116,12 @@ class _FichePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(children: [
-        Header(),
-        Body(),
-      ]),
+      body: SingleChildScrollView(
+        child: Column(children: <Widget>[
+          Header(),
+          Bandeau(),
+        ]),
+      ),
       floatingActionButton: FloatingActionButton(
         onPressed: _incrementCounter,
         tooltip: 'Increment',
@@ -122,92 +129,4 @@ class _FichePageState extends State<MyHomePage> {
       ), // This trailing comma makes auto-formatting nicer for build methods.
     );
   }
-}
-
-class Body extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Stack(
-      children: [Text('test')],
-    );
-  }
-}
-
-class Header extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    MediaQueryData query = MediaQuery.of(context);
-    double screenWidth = query.size.width;
-    double screenHeight = query.size.height;
-    return Stack(
-      alignment: Alignment.bottomCenter,
-      children: [
-        Image.asset(
-          AppImages.pancakes,
-          width: screenWidth,
-        ),
-        Container(
-          width: screenWidth,
-          decoration: BoxDecoration(
-            borderRadius: BorderRadius.only(
-              topLeft: Radius.circular(16),
-              topRight: Radius.circular(16),
-            ),
-            color: AppColors.white,
-          ),
-          child: Padding(
-            padding: EdgeInsets.fromLTRB(20, 30, 20, 0),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Text(
-                  'Pancakes',
-                  style: TextStyle(
-                    color: AppColors.blue,
-                    fontWeight: FontWeight.w900,
-                    fontSize: 24,
-                  ),
-                ),
-                Text(
-                  'Grand mère Danette',
-                  style: TextStyle(
-                    color: AppColors.gray3,
-                  ),
-                ),
-              ],
-            ),
-          ),
-        ),
-      ],
-    );
-  }
-}
-
-class Product {
-  final String barcode;
-  final String? name;
-  final String? altName;
-  final String? picture;
-  final String? quantity;
-  final List<String>? brands;
-  final List<String>? manufacturingCountries;
-  final List<String>? ingredients;
-  final List<String>? traces;
-  final List<String>? allergens;
-  final Map<String, String>? additives;
-  final bool? ingredientsFromPalmOil;
-
-  Product(
-      {required this.barcode,
-      this.name,
-      this.altName,
-      this.picture,
-      this.quantity,
-      this.brands,
-      this.manufacturingCountries,
-      this.ingredients,
-      this.traces,
-      this.allergens,
-      this.additives,
-      this.ingredientsFromPalmOil});
 }

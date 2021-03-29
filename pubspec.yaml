@@ -23,6 +23,9 @@ environment:
 dependencies:
   flutter:
     sdk: flutter
+  flutter_svg: ^0.19.3
+  flutter_bloc: ^7.0.0
+  http: ^0.13.1
 
 
   # The following adds the Cupertino Icons font to your application.
@@ -62,7 +65,7 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: icons
+    - family: AppIcons
       fonts:
         - asset: res/fonts/app_icons.ttf
   #       - asset: fonts/Schyler-Italic.ttf
