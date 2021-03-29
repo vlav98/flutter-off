@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:yuka/res/app_colors.dart';
-import 'package:yuka/res/app_icons.dart';
 import 'package:yuka/res/resources.dart';
+
+import '../lib/app_icons.dart';
 
 void main() {
   runApp(MyApp());
@@ -43,7 +44,7 @@ class EmptyListScreen extends StatelessWidget {
           'Mes scans',
           style: TextStyle(color: Theme.of(context).primaryColor),
         ),
-        actions: [
+        actions: <Widget>[
           IconButton(
             icon: FittedBox(
               child: Icon(
@@ -75,9 +76,7 @@ class EmptyListScreen extends StatelessWidget {
             ),
             SizedBox(height: screenHeight * 0.1),
             TextButton(
-              onPressed: () {
-                print('Clic');
-              },
+              onPressed: () {},
               child: Row(
                 mainAxisSize: MainAxisSize.min,
                 children: [

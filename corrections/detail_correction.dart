@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:yuka/res/app_icons.dart';
+
+import '../lib/app_icons.dart';
 
 class DetailCorrection extends StatelessWidget {
   @override
