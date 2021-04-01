@@ -3,6 +3,38 @@ import 'package:yuka/res/app_colors.dart';
 import 'package:yuka/res/app_images.dart';
 import 'package:yuka/scores.dart';
 
+import 'app_icons.dart';
+
+class FichePage extends StatelessWidget {
+  final String product;
+
+  FichePage({required this.product});
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: Text('Product'),
+        centerTitle: false,
+        iconTheme: IconThemeData(
+          color: AppColors.blue,
+        ),
+      ),
+      body: SingleChildScrollView(
+        child: Column(children: <Widget>[
+          Header(product: product),
+          Bandeau(),
+        ]),
+      ),
+      //bottomNavigationBar: DetailsScreen(),
+    );
+  }
+
+  void _openEmptyPage(BuildContext context, String productname) {
+    Navigator.pop(context);
+  }
+}
+
 class Bandeau extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
@@ -12,7 +44,19 @@ class Bandeau extends StatelessWidget {
     return Container(
         color: AppColors.gray1,
         child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: <Widget>[
+            Container(
+              color: AppColors.white,
+              width: screenWidth,
+              child: Padding(
+                padding: EdgeInsets.symmetric(vertical: 10, horizontal: 20),
+                child: Text(
+                  'Pancakes avec fruits',
+                  style: TextStyle(color: AppColors.gray3),
+                ),
+              ),
+            ),
             Row(
               children: <Widget>[
                 NutriscoreWidget(nutriscore: 'A'),
@@ -134,6 +178,10 @@ class GroupWidget extends StatelessWidget {
 }
 
 class Header extends StatelessWidget {
+  final String product;
+
+  const Header({required this.product});
+
   @override
   Widget build(BuildContext context) {
     MediaQueryData query = MediaQuery.of(context);
@@ -161,7 +209,7 @@ class Header extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: <Widget>[
                 Text(
-                  'Pancakes',
+                  product,
                   style: TextStyle(
                     color: AppColors.blue,
                     fontWeight: FontWeight.w900,
@@ -174,10 +222,9 @@ class Header extends StatelessWidget {
                     color: AppColors.gray3,
                   ),
                 ),
-                Padding(
-                  padding: EdgeInsets.symmetric(vertical: 10),
-                  child: Text('Pancakes avec fruits'),
-                ),
+                SizedBox(
+                  height: 10,
+                )
               ],
             ),
           ),
@@ -240,11 +287,78 @@ class ProductDataWidget extends StatelessWidget {
                         .bodyText1
                         ?.copyWith(color: AppColors.gray3),
                     textAlign: TextAlign.end),
-              )
+              ),
             ],
           ),
         ],
       ),
     );
+  }
+}
+
+enum ProductDetailsCurrentTab { summary, info, nutrition, nutritionalValues }
+
+class FicheScreen extends StatefulWidget {
+  @override
+  _FichePageState createState() => _FichePageState();
+}
+
+class _FichePageState extends State<FicheScreen> {
+  ProductDetailsCurrentTab currentTab = ProductDetailsCurrentTab.summary;
+  int position = 0;
+
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      body: Stack(
+        children: <Widget>[
+          Offstage(
+            offstage: currentTab != ProductDetailsCurrentTab.summary,
+            child: Text('1'),
+          ),
+          Offstage(
+            offstage: currentTab != ProductDetailsCurrentTab.info,
+            child: Text('2'),
+          ),
+          Offstage(
+            offstage: currentTab != ProductDetailsCurrentTab.nutrition,
+            child: Text('3'),
+          ),
+          Offstage(
+            offstage: currentTab != ProductDetailsCurrentTab.nutritionalValues,
+            child: Text('4'),
+          ),
+        ],
+      ),
+      bottomNavigationBar: BottomNavigationBar(
+        items: <BottomNavigationBarItem>[
+          BottomNavigationBarItem(
+              icon: Icon(AppIcons.tabBarcode), label: 'Fiche'),
+          BottomNavigationBarItem(
+              icon: Icon(AppIcons.tabFridge), label: 'Caractéristiques'),
+          BottomNavigationBarItem(
+              icon: Icon(AppIcons.tabNutrition), label: 'Nutrition'),
+          BottomNavigationBarItem(
+              icon: Icon(AppIcons.tabArray), label: 'Tableau'),
+        ],
+        currentIndex: position,
+        onTap: (int position) {
+          setState(() {
+            currentTab = ProductDetailsCurrentTab.values.elementAt(position);
+            this.position = position;
+          });
+        },
+      ),
+    );
+  }
+
+  Widget _body() {
+    if (currentTab == ProductDetailsCurrentTab.summary) return Text('1');
+    if (currentTab == ProductDetailsCurrentTab.info) return Text('2');
+    if (currentTab == ProductDetailsCurrentTab.nutrition) return Text('3');
+    if (currentTab == ProductDetailsCurrentTab.nutritionalValues)
+      return Text('4');
+
+    throw Exception('');
   }
 }

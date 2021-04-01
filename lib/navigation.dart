@@ -15,7 +15,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
   Widget build(BuildContext context) {
     return Scaffold(
       body: Stack(
-        children: [
+        children: <Widget>[
           Offstage(
             offstage: currentTab != ProductDetailsCurrentTab.summary,
             child: Text('1'),
@@ -37,13 +37,13 @@ class _DetailsScreenState extends State<DetailsScreen> {
       bottomNavigationBar: BottomNavigationBar(
         items: [
           BottomNavigationBarItem(
-              icon: Icon(AppIcons.tab_barcode), label: 'Fiche'),
+              icon: Icon(AppIcons.tabBarcode), label: 'Fiche'),
           BottomNavigationBarItem(
-              icon: Icon(AppIcons.tab_fridge), label: 'Caractéristiques'),
+              icon: Icon(AppIcons.tabFridge), label: 'Caractéristiques'),
           BottomNavigationBarItem(
-              icon: Icon(AppIcons.tab_nutrition), label: 'Nutrition'),
+              icon: Icon(AppIcons.tabNutrition), label: 'Nutrition'),
           BottomNavigationBarItem(
-              icon: Icon(AppIcons.tab_array), label: 'Tableau'),
+              icon: Icon(AppIcons.tabArray), label: 'Tableau'),
         ],
         currentIndex: position,
         onTap: (int position) {

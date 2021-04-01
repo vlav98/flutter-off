@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:yuka/res/app_colors.dart';
 import 'package:yuka/res/app_images.dart';
-import 'package:yuka/res/resources.dart';
 
 import 'app_icons.dart';
 
