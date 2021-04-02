@@ -11,6 +11,13 @@ class FichePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+        title: Text('Product'),
+        centerTitle: false,
+        iconTheme: IconThemeData(
+          color: AppColors.blue,
+        ),
+      ),
       body: SingleChildScrollView(
         child: Column(children: <Widget>[
           Header(product: product),
