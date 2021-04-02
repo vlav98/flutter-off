@@ -4,6 +4,7 @@ import 'package:yuka/res/app_images.dart';
 import 'package:yuka/scores.dart';
 
 import 'app_icons.dart';
+import 'navigation.dart';
 
 class FichePage extends StatelessWidget {
   final String product;
@@ -26,7 +27,7 @@ class FichePage extends StatelessWidget {
           Bandeau(),
         ]),
       ),
-      //bottomNavigationBar: DetailsScreen(),
+      bottomNavigationBar: DetailsScreen(),
     );
   }
 

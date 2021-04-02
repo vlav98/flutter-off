@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yuka/fiche_page.dart';
 
 import 'app_icons.dart';
 
@@ -18,7 +19,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
         children: <Widget>[
           Offstage(
             offstage: currentTab != ProductDetailsCurrentTab.summary,
-            child: Text('1'),
+            child: FichePage(product: 'Pancakes aux fruits'),
           ),
           Offstage(
             offstage: currentTab != ProductDetailsCurrentTab.info,
@@ -35,7 +36,7 @@ class _DetailsScreenState extends State<DetailsScreen> {
         ],
       ),
       bottomNavigationBar: BottomNavigationBar(
-        items: [
+        items: <BottomNavigationBarItem>[
           BottomNavigationBarItem(
               icon: Icon(AppIcons.tabBarcode), label: 'Fiche'),
           BottomNavigationBarItem(
@@ -57,7 +58,8 @@ class _DetailsScreenState extends State<DetailsScreen> {
   }
 
   Widget _body() {
-    if (currentTab == ProductDetailsCurrentTab.summary) return Text('1');
+    if (currentTab == ProductDetailsCurrentTab.summary)
+      return FichePage(product: 'Pancakes aux fruits');
     if (currentTab == ProductDetailsCurrentTab.info) return Text('2');
     if (currentTab == ProductDetailsCurrentTab.nutrition) return Text('3');
     if (currentTab == ProductDetailsCurrentTab.nutritionalValues)
