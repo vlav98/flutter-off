@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:yuka/fiche_page.dart';
 import 'package:yuka/res/app_colors.dart';
 
 import 'app_icons.dart';
@@ -34,8 +35,9 @@ class _DetailsScreenState extends State<DetailsScreen> {
       body: Stack(
         children: <Widget>[
           Offstage(
-              offstage: currentTab != ProductDetailsCurrentTab.summary,
-              child: Text('1')),
+            offstage: currentTab != ProductDetailsCurrentTab.summary,
+            child: FichePage(product: 'Pancakes aux fruits'),
+          ),
           Offstage(
             offstage: currentTab != ProductDetailsCurrentTab.info,
             child: Text('2'),
