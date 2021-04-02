@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:yuka/fiche_page.dart';
+import 'package:yuka/res/app_colors.dart';
 
 import 'app_icons.dart';
 
@@ -15,12 +15,27 @@ class _DetailsScreenState extends State<DetailsScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      extendBodyBehindAppBar: true,
+      appBar: AppBar(
+        elevation: 0.0,
+        leading: IconButton(
+          tooltip: MaterialLocalizations.of(context).backButtonTooltip,
+          icon: Icon(
+            Icons.arrow_back,
+            size: 35.0,
+          ),
+          onPressed: () => {Navigator.of(context).pop()},
+        ),
+        iconTheme: IconThemeData(
+          color: AppColors.black,
+        ),
+        backgroundColor: Colors.transparent,
+      ),
       body: Stack(
         children: <Widget>[
           Offstage(
-            offstage: currentTab != ProductDetailsCurrentTab.summary,
-            child: FichePage(product: 'Pancakes aux fruits'),
-          ),
+              offstage: currentTab != ProductDetailsCurrentTab.summary,
+              child: Text('1')),
           Offstage(
             offstage: currentTab != ProductDetailsCurrentTab.info,
             child: Text('2'),
@@ -55,17 +70,6 @@ class _DetailsScreenState extends State<DetailsScreen> {
         },
       ),
     );
-  }
-
-  Widget _body() {
-    if (currentTab == ProductDetailsCurrentTab.summary)
-      return FichePage(product: 'Pancakes aux fruits');
-    if (currentTab == ProductDetailsCurrentTab.info) return Text('2');
-    if (currentTab == ProductDetailsCurrentTab.nutrition) return Text('3');
-    if (currentTab == ProductDetailsCurrentTab.nutritionalValues)
-      return Text('4');
-
-    throw Exception('');
   }
 }
 

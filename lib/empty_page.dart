@@ -10,7 +10,8 @@ class EmptyPage extends StatelessWidget {
     Navigator.push(
       context,
       MaterialPageRoute<void>(
-          builder: (BuildContext context) => FichePage(product: productname)),
+        builder: (BuildContext context) => FichePage(product: productname)),
+        //builder: (BuildContext context) => FichePage(product: productname)),
     );
   }
 
