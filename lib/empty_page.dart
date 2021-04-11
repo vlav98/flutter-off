@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:yuka/app_icons.dart';
+import 'package:yuka/attributes_page.dart';
 import 'package:yuka/fiche_page.dart';
 import 'package:yuka/res/app_colors.dart';
 import 'package:yuka/res/app_vectorial_images.dart';
@@ -10,8 +11,18 @@ class EmptyPage extends StatelessWidget {
     Navigator.push(
       context,
       MaterialPageRoute<void>(
-        builder: (BuildContext context) => FichePage(product: productname)),
-        //builder: (BuildContext context) => FichePage(product: productname)),
+          builder: (BuildContext context) => FichePage(product: productname)),
+      //builder: (BuildContext context) => FichePage(product: productname)),
+    );
+  }
+
+  void _openAttrPage(BuildContext context, String productname) {
+    Navigator.push(
+      context,
+      MaterialPageRoute<void>(
+          builder: (BuildContext context) =>
+              AttributesPage(product: productname)),
+      //builder: (BuildContext context) => FichePage(product: productname)),
     );
   }
 
@@ -34,7 +45,7 @@ class EmptyPage extends StatelessWidget {
                 ),
               ),
               onPressed: () {
-                _openFichePage(context, 'Pancake aux fruits');
+                _openAttrPage(context, 'Pancake aux fruits');
               },
             ),
           )
